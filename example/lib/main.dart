@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:bat_mx7800_scandevice/bat_mx7800_scandevice.dart';
 
 final scanner = BatMx7800Scandevice();

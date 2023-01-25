@@ -35,6 +35,7 @@ public class BatMx7800ScandevicePlugin implements FlutterPlugin, MethodCallHandl
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+    context = flutterPluginBinding.getApplicationContext();
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), METHOD_CHANNEL);
     channel.setMethodCallHandler(this);
 
@@ -58,11 +59,6 @@ public class BatMx7800ScandevicePlugin implements FlutterPlugin, MethodCallHandl
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     // scanner api methods call from SDK
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
-    }
 
     switch (call.method) {
       case "open":

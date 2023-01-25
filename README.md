@@ -1,6 +1,6 @@
 # bat_mx7800_scandevice
 
-[![License][license-image]][license-url] 
+![License][license-image]][license-url]
 
 Flutter plugin for ScanDevice SDK for use on .BAT MX7800 Series.
 With this plugin you can easily control the basic functions of barcode scanner of the device (open, close, manual scan, etc).
@@ -26,13 +26,13 @@ dependencies:
 
 ## Usage
 
-- [1] Declare scanner
+- 1) Declare scanner
 
 ```dart
 final scanner = BatMx7800Scandevice();
 ```
 
-- [2] Initialize the interface with Init() method
+- 2) Initialize the interface with Init() method
 
 ```dart
 void main() async {
@@ -42,7 +42,7 @@ void main() async {
 }
 ```
 
-- [3] Create a listener for catch barcodes readed
+- 3) Create a listener for catch barcodes readed
 
 ```dart
  @override
