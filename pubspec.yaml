@@ -1,6 +1,6 @@
 name: bat_mx7800_scandevice
 description: Flutter plugin for ScanDevice SDK for use on .BAT MX7800 Series.
-version: 1.0.0
+version: 1.0.1
 homepage: https://battecnologia.com/site/mx7800-xr/
 repository: https://github.com/battecnologia/bat_mx7800_scandevice
 
