@@ -5,8 +5,8 @@ class BatMx7800Scandevice {
   final _eventChannel = const EventChannel('scandevice.events');
   final _methodChannel = const MethodChannel('scandevice.methods');
 
-  late bool _beep;
-  late bool _vibrate;
+  bool _beep = false;
+  bool _vibrate = false;
 
   bool connected = false;
   bool get scanBeep => _beep;
@@ -22,23 +22,26 @@ class BatMx7800Scandevice {
   void closeScan() => invk('close');
   void resetScan() => invk('reset');
 
-  Future init() async {
+  Future<bool> init() async {
     try {
       _eventChannel
           .receiveBroadcastStream()
           // ignore: avoid_function_literals_in_foreach_calls
           .forEach((v) => listeners.forEach((listener) => listener(v)));
       connected = true;
+      openScan();
+      setBroadcastOutputMode();
+
+      _beep = await invk<bool>('beep') ?? false;
+      _vibrate = await invk<bool>('vibrate') ?? false;
     } catch (e) {
+      _beep = false;
+      _vibrate = false;
       debugPrint('SCANDEVICE CONNECTION ERROR: $e');
       connected = false;
     }
 
-    openScan();
-    setBroadcastOutputMode();
-
-    _beep = await invk<bool>('beep') ?? false;
-    _vibrate = await invk<bool>('vibrate') ?? false;
+    return connected;
   }
 
   Future<T?> invk<T>(String method) {

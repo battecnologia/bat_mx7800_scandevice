@@ -5,7 +5,14 @@ final scanner = BatMx7800Scandevice();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await scanner.init(); //MANDATORY.. INITIALIZE THE SCANNER INTERFACE
+  final scanOK =
+      await scanner.init(); //MANDATORY.. INITIALIZE THE SCANNER INTERFACE
+
+  if (!scanOK) {
+    print(
+        'Error initializing scanner'); //just for test the initialization return
+  }
+
   runApp(const MyApp());
 }
 
@@ -17,7 +24,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _barcodeReaded = '-----';
+  String _barcodeReaded =
+      scanner.connected ? '-----' : 'Scanner not connected or incompatible!';
 
   @override
   void initState() {

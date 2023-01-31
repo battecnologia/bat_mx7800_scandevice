@@ -1,3 +1,8 @@
+## 1.0.3
+
+* Change "init" method for return a Future<Bool> for better handling.
+* Updated Demo App
+
 ## 1.0.2
 
 * Improved Demo APP
