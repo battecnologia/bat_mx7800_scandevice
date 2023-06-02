@@ -1,3 +1,7 @@
+## 1.0.3+1
+
+* Update code for Flutter 3.10
+
 ## 1.0.3
 
 * Change "init" method for return a Future<Bool> for better handling.
